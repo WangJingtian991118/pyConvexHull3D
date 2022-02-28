@@ -9,10 +9,10 @@ import matplotlib.pyplot as plt
 
 
 def colinear(p0, p1, p2):
-    return all(cross(p1-p0, p2-p1) == 0)
+    return all(cross(p1-p0, p2-p1) == 0) #判断三个点是否共线，()中的若为真，则返回Ture
 
 def coplanar(p1, p2, p3, p0):
-    return dot(cross(p1-p0, p2-p1), p0-p3) == 0
+    return dot(cross(p1-p0, p2-p1), p0-p3) == 0  #判断四个点是否共面，dot函数执行矩阵乘法
 
 def preprocess(pts):
     """Assumes pts is an np.array with shape (n, 3).
