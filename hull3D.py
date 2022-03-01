@@ -15,7 +15,7 @@ def coplanar(p1, p2, p3, p0):
     return dot(cross(p1-p0, p2-p1), p0-p3) == 0  #判断四个点是否共面，dot函数执行矩阵乘法
 
 def preprocess(pts):
-    """Assumes pts is an np.array with shape (n, 3).
+    """Assumes pts is an np.array with shape (n, 3). 即存储点的格式为pts = np.array([[1,2,3],[4,5,6],[7,8,9],......])
        Removes duplicate points.
        Swaps (unique) rows to front like [xmax, xmin, ymax, ymin, zmax, zmin]  
     """
