@@ -19,9 +19,11 @@ def preprocess(pts):
        Removes duplicate points.
        Swaps (unique) rows to front like [xmax, xmin, ymax, ymin, zmax, zmin]  
     """
-    pts = unique(pts, axis=0)
-    pts = array(sample(list(pts), len(pts)))
-    pts[[0, pts[:,0].argmax()]]  = pts[[pts[:,0].argmax(), 0]]
+    pts = unique(pts, axis=0)   #去除重复行，即消除重复点
+    pts = array(sample(list(pts), len(pts)))    #sample(a,n) 从序列a中随机抽取n个元素，并将n个元素生以list形式返回，顺序是随机的。
+    #pts[n:,0]是从pts中第n+1个点的x坐标组成的一个list，argmax()返回数组中最大数的索引，其对象必须是array
+    pts = array(sample(list(pts), len(pts)))    #sample(a,n) 从序列a中随机抽取n个元素，并将n个元素生以list形式返回，顺序是随机的。
+    pts[[0, pts[:,0].argmax()]]  = pts[[pts[:,0].argmax(), 0]]  
     pts[[1, pts[1:,0].argmin()+1]] = pts[[pts[1:,0].argmin()+1, 1]]
     pts[[2, pts[2:,1].argmax()+2]] = pts[[pts[2:,1].argmax()+2, 2]]
     pts[[3, pts[3:,1].argmin()+3]] = pts[[pts[3:,1].argmin()+3, 3]]
